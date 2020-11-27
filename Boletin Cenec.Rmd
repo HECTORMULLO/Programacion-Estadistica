@@ -1,0 +1,64 @@
+---
+title: "Informe Cenec"
+author: "Hector Mullo"
+date: "27/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+load(file ="CENEC_2010_data.RData")
+```
+
+# Boletín Económico
+## Principales resultados del Censo Económico
+### Resumen Ejecutivo
+
+En el mes de agosto el Instituto Nacional de Estadísticas y Censo publicó la información correspondiente al Censo Económico del país. En esta edición del Boletín se presentan los principales resultados, en los cuales se evidencia la importancia de la actividad productiva en la economía ecuatoriana.
+
+Las empresas con 200 trabajadores en adelante concentran el 50% del empleo remunerado, pagan salarios casi 5 veces superior a las otras actividades e invierten cerca de 13 veces más en la capacitación y formación de sus trabajadores; a la vez que representan el 0,18% de los establecimientos económicos censados.
+
+Existe una complementariedad entre los diferentes sectores y tamaños de establecimientos. La actividad productiva grande genera mayor encadenamiento puesto que demanda de otros bienes y servicios para cumplir con sus procesos, esto se evidencia en un mayor gasto en materias primas, productos de envase y embalaje y servicios prestados por terceros; lo que estimula el desarrollo de otras actividades.
+
+
+## Introducción
+
+
+El objetivo general de los censos económicos es consolidar información de los diferentes sectores de producción y comercialización de bienes y servicios, para determinar la estructura económica de un país; es decir, la distribución
+de las actividades productivas que se llevan a cabo.
+
+El Censo Nacional Económico 2010 del Ecuador representa una fuente de información estadística, que anteriormente no se disponía. Por lo que, puede convertirse en una herramienta que facilite la toma de decisiones ya que posibilita conocer el comportamiento de las diferentes actividades económicas. Sin embargo, debe ser usada correctamente para evitar sesgos en la información y el uso inapropiado de la misma.
+
+Vale anotar que el Censo Nacional Económico tiene, entre otras, tres fuertes limitaciones. En primer lugar, al ser realizado en 2010, consolidó las cifras del año 2009, por lo que podría no representar la realidad actual de muchos sectores. Adicionalmente, no incluye a la actividad agrícola rural, esto se debe a que dicha información se recoge en los censos agrícolas, por lo que deja de lado a un importante sector de la economía ecuatoriana.
+
+La tercera limitación, una de las más importantes para el análisis de estpublicación, es que dentro del Censo se analiza la información poestablecimiento económico y no por empresa. La diferencia entre ambosconceptos es que los establecimientos corresponden a unidades económicaque, bajo una sola dirección o control, combina actividades y recursos con lafinalidad de producir bienes y servicios y está ubicada en un lugadeterminado; mientras que, la empresa corresponde a una persona natural ojurídica autónoma en sus decisiones financieras y de administraciónpropietaria o administradora de uno o más establecimientos. Una empresa espor ejemplo, una sociedad jurídica que tiene una razón social y que mantieneuna serie de restaurantes, en los que vende diferentes variedades dealimentos.
+
+El Censo Económico consta de 8 secciones que debían ser completadas por los establecimientos económicos, en las cuales se solicitó datos generales de la empresa; información de personal ocupado y remuneraciones; clasificación de la actividad económica principal; ingresos, gastos, existencias; entre otros. En esta edición de Boletín Económico se presenta un análisis de las principales variables del Censo.
+
+
+## En el país existe un gran número de establecimientos independientes...
+
+
+El Censo Económico levantó información de `r length(a)` establecimientos, cabe recalcar que esta cifra no representa a empresas y por este motivo supera en gran medida a las cerca de 45 mil sociedades registradas en la
+Superintendencia de Compañías. 
+
+A los establecimientos, en el censo, se los divide en cuatro tipos: únicos, matrices, sucursales y auxiliares. Aquellos locales catalogados como únicos, que concentran el mayor número con 455.852, son independientes y no tienen relación directa con otro establecimiento. Entre este tipo de establecimientos se podrían catalogar, por ejemplo, una
+tienda de abarrotes, una industria que tiene una sola planta y no cuenta con locales de distribución.
+
+El segundo grupo con mayor concentración son las sucursales que abarcan un total de 32.915; seguido por matrices con 11.450. Un claro ejemplo de esto es un restaurante que tiene dos o más locales, o una cadena de supermercados.
+
+```{r }
+require(grDevices)
+b <- table(a)
+a <- prop.table(b)
+names(a) <- 
+pie(a, col = rainbow(length(a)), radius = 0.9, labels = c("Único-89.19%", "Matriz-2.24%", "Sucursal-6.44%", "Auxiliar-2.14%"))
+
+```
+
+Adicionalmente, existen `r b[4]` establecimientos considerados como actividades auxiliares, que son aquellos lugares que bridan soporte a un establecimiento pero no ejercen una actividad productiva como tal; en este grupo se destacan bodegas, parqueaderos, centros de acopio, etc. 
+
+
+## ...y,  el 68% de los establecimientos podrían considerarse como formales.
+
+De acuerdo a la estructura conceptual de la encuesta de empleo desarrollada por el Instituto Ecuatoriano de Estadística y Censos (INEC), los establecimientos formales son aquellos con más de diez trabajadores tengan o no Registro Único de Contribuyentes (RUC) y aquellos de hasta 10 trabajadores que lleven RUC y registros contables. Por lo tanto, de acuerdo al Censo, el 68% de los establecimientos son formales; sin embargo, cabe destacar que el 67% cuenta con RUC y el 1% restante son establecimientos con más de diez trabajadores que no tiene RUC:
